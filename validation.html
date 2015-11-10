@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validation</title>
+	
+	<style>
+	body{
+		background: #f6f6ee;}
+	
+	ul{
+		list-style: none;}
+	
+	li{
+		margin-bottom: 10px;}	
+	
+	label,input,button{
+		display: inline-block;	
+		height: 20px;
+		}
+	label{
+	width: 300px;
+	color: #6D6767;
+	font-weight: bold;
+	vertical-align: top;}
+
+	
+	input,textarea{
+		width: 400px;
+		padding: 3px 0 3px 10px;
+		border: 1px solid grey;
+		border-radius: 3px;}
+	button{
+		width: 200px;
+		height: 30px;
+		position: relative;
+		left: 511px;
+		font-weight: bold;
+		color: white;
+		background: #6D6767;			
+		border-radius: 3px;}
+		
+	
+	
+	</style>
+	
+</head>
+<body>
+	
+	<form action="" onsubmit="return FormValidate()">
+		<ul>
+			<li><label for="name" id="name1">name:</label><input type="text" id="name"></li>
+			<li><label for="surname">Фамилия:</label><input type="text" id="surname"></li>
+			<li><label for="phone">Телефон:</label><input type="text" id="phone"></li>
+			<li><label for="email">Электронная почта:</label><input type="text" id="email"></li>
+			<li><label for="info">Дополнительная информация:</label><textarea name="" id="info" cols="30" rows="10"></textarea></li>
+			<li><button type="submit" onclick="">Отправить</button></li>
+			<li><button >Отправить2</button></li>
+		</ul>
+		<p id="par"></p>
+	</form>
+	
+	
+	
+	
+	<script>
+	
+	var str = document.getElementById("name"),
+	str1 = document.getElementById("surname"),
+	str2 = document.getElementById("phone"),
+	 str3 = document.getElementById("email"),
+	 str4 = document.getElementById("info");
+	
+	function FormValidate (){
+	
+	var string = str.value,
+		string1 = str1.value,
+		string2 = str2.value,
+		string3 = str3.value,
+		string4 = str4.value;
+	
+	
+	if (string.search(/[a-z]/) == -1){
+	alert("Введите имя!");
+	  return false;
+	}
+	else if (string1.search(/[a-z]/) == -1){
+	alert("Введите Фамилию!");
+      return false;	
+	}
+	else if (string2.search(/[0-9]/) == -1){
+	alert("Введите телефон!");
+      return false;
+	}
+	else if (string2.search(/[0-9]{5,}/) == -1){
+	alert("Телефон введен не верно!");
+      return false;
+	}
+	else if (string3.search(/\w/) == -1){
+	alert("Введите электронную почту!");
+      return false;	
+	}
+	else if ((string3.search(/\w{2,}@.\w{2,}.\w{2,}/) == -1) )  {
+	alert("Электронная почта введена не верно!");
+      return false;	
+	}
+	
+	else if (string3.search(/^(\W+)@(\W+)/) != -1)  {
+	alert("Электронная почта введена не верно!");
+      return false;	
+	}
+	
+	
+	else if (str4.value == ''){
+	alert("Введите информацию!");
+      return false;	
+	}
+	return true;
+	
+	}
+	
+	
+	
+	
+	</script>
+	
+	
+</body>
+</html>
